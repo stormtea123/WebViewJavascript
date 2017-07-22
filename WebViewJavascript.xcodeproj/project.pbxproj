@@ -15,6 +15,8 @@
 		840195E91F225979004AA511 /* WebViewJavascriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840195E81F225979004AA511 /* WebViewJavascriptTests.swift */; };
 		840195F41F225979004AA511 /* WebViewJavascriptUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840195F31F225979004AA511 /* WebViewJavascriptUITests.swift */; };
 		840196021F2262E9004AA511 /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 840196011F2262E9004AA511 /* home.html */; };
+		F4CD7C5A1F2332CE00B460E8 /* WKWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CD7C591F2332CE00B460E8 /* WKWebViewViewController.swift */; };
+		F4CD7C5C1F23334000B460E8 /* home-WK.html in Resources */ = {isa = PBXBuildFile; fileRef = F4CD7C5B1F23334000B460E8 /* home-WK.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		840195F31F225979004AA511 /* WebViewJavascriptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewJavascriptUITests.swift; sourceTree = "<group>"; };
 		840195F51F225979004AA511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840196011F2262E9004AA511 /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
+		F4CD7C591F2332CE00B460E8 /* WKWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewViewController.swift; sourceTree = "<group>"; };
+		F4CD7C5B1F23334000B460E8 /* home-WK.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "home-WK.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 			children = (
 				840195D31F225979004AA511 /* AppDelegate.swift */,
 				840195D51F225979004AA511 /* ViewController.swift */,
+				F4CD7C591F2332CE00B460E8 /* WKWebViewViewController.swift */,
 				840196011F2262E9004AA511 /* home.html */,
+				F4CD7C5B1F23334000B460E8 /* home-WK.html */,
 				840195D71F225979004AA511 /* Main.storyboard */,
 				840195DA1F225979004AA511 /* Assets.xcassets */,
 				840195DC1F225979004AA511 /* LaunchScreen.storyboard */,
@@ -240,6 +246,7 @@
 			files = (
 				840195DE1F225979004AA511 /* LaunchScreen.storyboard in Resources */,
 				840196021F2262E9004AA511 /* home.html in Resources */,
+				F4CD7C5C1F23334000B460E8 /* home-WK.html in Resources */,
 				840195DB1F225979004AA511 /* Assets.xcassets in Resources */,
 				840195D91F225979004AA511 /* Main.storyboard in Resources */,
 			);
@@ -266,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CD7C5A1F2332CE00B460E8 /* WKWebViewViewController.swift in Sources */,
 				840195D61F225979004AA511 /* ViewController.swift in Sources */,
 				840195D41F225979004AA511 /* AppDelegate.swift in Sources */,
 			);
