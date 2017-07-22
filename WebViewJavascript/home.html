@@ -1,23 +1,34 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>www.w3cmm.com</title>
 </head>
 
 <body>
     <br />
-    <h1> Welcome!!!</h1>
+    <h1> Welcome!</h1>
     <p>
-        <input type="button" value="call alert" onclick="callAppAlert()">
+        <input type="button" value="Call App" onclick="callApp()">
+    </p>
+    <p>
+        <input type="button" value="Call App Alert" onclick="callAppAlert()">
     </p>
     <p>
     	<a href="myapp:alert:Notice">Notice</a>
     </p>
     <script>
-    function callAppAlert() {
-        window.webkit.messageHandlers.AppModel.postMessage({
-            body: 'Hello!'
+    function callApp() {
+        // window.webkit.messageHandlers.AppModel.postMessage({
+        //     body: 'Hello!'
+        // });
+        window.webkit.messageHandlers.callbackHandler.postMessage({
+        	title: "Hello!",
+            body: 'Welcome!'
         });
+    }
+    function callAppAlert(){
+    	window.alert("Hi!")
     }
     function redHeader() {
         document.querySelector('h1').style.color = "red";

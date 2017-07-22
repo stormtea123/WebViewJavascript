@@ -7,74 +7,74 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController,UIWebViewDelegate {
-
-    @IBOutlet weak var webView: UIWebView!
+class ViewController: UIViewController, WKScriptMessageHandler,WKUIDelegate,WKNavigationDelegate  {
+    
+    var webView: WKWebView?
+    override func loadView() {
+        super.loadView()
+        
+        let contentController = WKUserContentController();
+//        let userScript = WKUserScript(
+//            source: "redHeader()",
+//            injectionTime: WKUserScriptInjectionTime.atDocumentEnd,
+//            forMainFrameOnly: true
+//        )
+//        contentController.addUserScript(userScript)
+        contentController.add(
+            self,
+            name: "callbackHandler"
+        )
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        
+        self.webView = WKWebView(frame: self.view.frame, configuration: config)
+        self.webView?.navigationDelegate = self;
+        self.view.addSubview(webView!)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         let localfilePath = Bundle.main.url(forResource: "home", withExtension: "html")
-        let requestObj = URLRequest(url: localfilePath! as URL)
-        webView.loadRequest(requestObj)
-        webView.delegate = self;
-    }
+        let req = URLRequest(url: localfilePath! as URL)
+        self.webView!.load(req)
 
+    }
+    
+    
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if let body = message.body as? NSDictionary {
+            
+            let alert = UIAlertController(title: body.object(forKey: "title")! as? String, message: body.object(forKey: "body")! as? String, preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
+        // create the alert
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let requestString: NSString = (request.url?.absoluteString)! as NSString
-        print(requestString)
-        let components: [String] = requestString.components(separatedBy: ":")
-        // Check for your protocol
-        if components.count > 1 && (String(components[0]) == "myapp") {
-            // Look for specific actions
-            if (String(components[1]) == "alert") {
-                // Your parameters can be found at
-                //   [components objectAtIndex:n]
-                print("myaction");
-                // create the alert
-                let alert = UIAlertController(title: String(components[2]), message: "Lauching this missile will destroy the entire universe. Is this what you intended to do?", preferredStyle: UIAlertControllerStyle.alert)
-                
-                // add the actions (buttons)
-//                alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.default, handler: nil))
-//                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-
-                
-                // add the actions (buttons)
-                alert.addAction(UIAlertAction(title: "Remind Me Tomorrow", style: UIAlertActionStyle.default, handler: nil))
-                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Launch the Missile", style: UIAlertActionStyle.destructive, handler: nil))
-                
-                // show the alert
-                self.present(alert, animated: true, completion: nil)
-            }
-            return false
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("didFinish")
+        
+        webView.evaluateJavaScript("redHeader()") { (value, error) in
+            print(value ?? "")
         }
-        return true
     }
-    // 该方法是在UIWebView在开发加载时调用
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        print("start")
-    }
-    
-    // 该方法是在UIWebView加载完之后才调用
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        print("finished")
-        let title:String = webView.stringByEvaluatingJavaScript(from: "document.title")!
-        print("title:\(title)" )
-        //redHeader
-        webView.stringByEvaluatingJavaScript(from: "redHeader()")
-    }
-    
-    // 该方法是在UIWebView请求失败的时候调用
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        print("fail")
-    }
-
-
-
+//    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+//        print("runJavaScriptAlertPanelWithMessage")
+//        let alertController = UIAlertController(title: "test", message: message, preferredStyle: .alert)
+//        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+//            completionHandler()
+//        }))
+//        self.present(alertController, animated: true, completion: nil)
+//    }
 }
 
