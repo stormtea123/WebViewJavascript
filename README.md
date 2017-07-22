@@ -4,6 +4,6 @@
 [https://www.w3cmm.com/notepad/webview-javascript.html](https://www.w3cmm.com/notepad/webview-javascript.html)
 
 ## Usage
-master分支为WKWebView，uiwebview分支为uiwebview
+master分支为WKWebView，uiwebview分支为UIWebView
 
     git checkout uiwebview
