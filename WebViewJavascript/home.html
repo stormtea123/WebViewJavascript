@@ -7,28 +7,25 @@
 
 <body>
     <br />
-    <h1> Welcome!</h1>
+    <h1>Welcome!</h1>
     <p>
-        <input type="button" value="Call App" onclick="callApp()">
+        <input type="button" value="Send Message To App" onclick="callApp()">
     </p>
     <p>
-        <input type="button" value="Call App Alert" onclick="callAppAlert()">
+        <input type="button" value="Alert Message From App" onclick="callAppAlert()">
     </p>
     <p>
-    	<a href="myapp:alert:Notice">Notice</a>
+    	<a href="jsbridge://alert?title=Notice&message=Lauching this missile will destroy the entire universe. Is this what you intended to do?">jsbridge</a>
     </p>
     <script>
     function callApp() {
-        // window.webkit.messageHandlers.AppModel.postMessage({
-        //     body: 'Hello!'
-        // });
         window.webkit.messageHandlers.callbackHandler.postMessage({
         	title: "Hello!",
-            body: 'Welcome!'
+            message: 'Welcome!'
         });
     }
     function callAppAlert(){
-    	window.alert("Hi!")
+    	alert("Hi!")
     }
     function redHeader() {
         document.querySelector('h1').style.color = "red";
@@ -38,7 +35,7 @@
 
         // Execution IS BLOCKING if you use this.
         var iframe = document.createElement("IFRAME");
-        iframe.setAttribute("src", "js://webView?question:meaning");
+        iframe.setAttribute("src", "jsbridge://webView?question:meaning");
         document.documentElement.appendChild(iframe);
         iframe.parentNode.removeChild(iframe);
         iframe = null;
