@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					840195CF1F225979004AA511 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = XTWM4R2294;
 						ProvisioningStyle = Automatic;
 					};
 					840195E31F225979004AA511 = {
@@ -419,7 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XTWM4R2294;
 				INFOPLIST_FILE = WebViewJavascript/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.w3cmm.WebViewJavascript;
@@ -434,7 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XTWM4R2294;
 				INFOPLIST_FILE = WebViewJavascript/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.w3cmm.WebViewJavascript;
@@ -521,6 +522,7 @@
 				840195FA1F225979004AA511 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		840195FB1F225979004AA511 /* Build configuration list for PBXNativeTarget "WebViewJavascriptTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +531,7 @@
 				840195FD1F225979004AA511 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		840195FE1F225979004AA511 /* Build configuration list for PBXNativeTarget "WebViewJavascriptUITests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +540,7 @@
 				840196001F225979004AA511 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
